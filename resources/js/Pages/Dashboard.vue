@@ -18,7 +18,7 @@ const showReview = ref(false);
 const rating = ref(0);
 const review = ref("");
 
-const apiKey = "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";
+const apiKey = "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";
 const endpoint = "https://api.openai.com/v1/chat/completions";
 
 const headers = {
@@ -143,7 +143,7 @@ async function fetchResources(value) {
                 </div>
             </div>
         </div>
-        <div class="w-10/12 md:w-[550px] py-12 flex justify-center mx-auto text-white">
+        <div class="w-screen px-8 bg-[#151519a6] md:w-[700px] rounded-lg py-12 flex justify-center mx-auto text-white">
             <div class="flex flex-col ">
                 <div v-if="processing" class="flex flex-col">
                     <span class="text-white font-thin animate-pulse"
@@ -162,7 +162,7 @@ async function fetchResources(value) {
             </div>
         </div>
 
-        <div class="w-96 md:w-[550px] py-12 justify-center mx-auto" v-if="showReview">
+        <div class="w-screen bg-[#151519a6] md:w-[700px] rounded-lg mt-8 p-5 justify-center mx-auto" v-if="showReview">
             <div class="flex flex-col">
                 <h1 class="text-white font-thin">Rate and leave a review</h1>
                 <div class="flex py-2">

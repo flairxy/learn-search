@@ -13,18 +13,19 @@ defineProps({
 <template>
     <Head title="Welcome" />
 
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-black selection:bg-red-500 selection:text-white"
+    <div style="background-image: url('/bg5.jpg');"
+        class="bg-no-repeat bg-cover bg-blend-multiply bg-center relative sm:flex sm:justify-center sm:items-center min-h-screen bg-blue-950 selection:bg-red-500 selection:text-white"
     >
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <Link href="/">
                 <div class="flex py-3 justify-center">
-                    <div class="text-xl font-bold text-white mr-1 uppercase">
+                    <img class="w-14 h-14" src="/logoWhite.png" alt="">
+                    <div class="text-xl font-bold text-white mt-4 uppercase">
                         Learn Search
                     </div>
-                    <ApplicationLogo
+                    <!-- <ApplicationLogo
                         class="w-10 h-10 -mt-2 fill-current text-gray-500"
-                    />
+                    /> -->
                 </div>
             </Link>
 

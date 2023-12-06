@@ -1,15 +1,20 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import { Link } from '@inertiajs/vue3';
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-black">
+    <div
+        style="background-image: url('/bg5.jpg')"
+        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-no-repeat bg-cover bg-blend-multiply bg-center bg-blue-950"
+    >
         <div>
             <Link href="/">
                 <div class="flex py-3">
-                    <div class="text-xl font-bold text-white mr-1 uppercase">Learn Search</div>
-                    <ApplicationLogo class="w-10 h-10 -mt-2 fill-current text-gray-500" />
+                    <img class="w-14 h-14" src="/logoWhite.png" alt="">
+                    <div class="text-xl font-bold text-white mt-4 uppercase">
+                        Learn Search
+                    </div>
                 </div>
             </Link>
         </div>
