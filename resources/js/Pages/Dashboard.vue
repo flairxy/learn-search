@@ -18,14 +18,6 @@ const showReview = ref(false);
 const rating = ref(0);
 const review = ref("");
 
-const apiKey = "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";
-const endpoint = "https://api.openai.com/v1/chat/completions";
-
-const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${apiKey}`,
-};
-
 function setRating(index) {
     rating.value = index;
 }
@@ -58,21 +50,12 @@ async function fetchResources(value) {
         show.value = false;
         processing.value = true;
 
-        const data = {
-            model: "gpt-3.5-turbo",
-            messages: [
-                { role: "system", content: "You are a helpful assistant." },
-                {
-                    role: "user",
-                    content: `Links to learning resources on ${path.value}. Return response in html list with a class "list-disc mb-2" and also include website name. All links should have a class of "text-cyan-100 hover:font-semibold", video links can be added.`,
-                },
-            ],
-        };
         await axios.post(
             route("profile.career.update", { career: path.value })
         );
-        const response = await axios.post(endpoint, data, { headers });
-        resource.value = response.data.choices[0].message.content;
+        const endpoint = "http://api.learnsearch.dev/resources";
+        const response = await axios.post(endpoint, { role: path.value });
+        resource.value = response.data;
 
         processing.value = false;
         showReview.value = true;
@@ -143,8 +126,10 @@ async function fetchResources(value) {
                 </div>
             </div>
         </div>
-        <div class="w-screen px-8 bg-[#151519a6] md:w-[700px] rounded-lg py-12 flex justify-center mx-auto text-white">
-            <div class="flex flex-col ">
+        <div
+            class="w-screen px-8 bg-[#151519a6] md:w-[700px] rounded-lg py-12 flex justify-center mx-auto text-white"
+        >
+            <div class="flex flex-col">
                 <div v-if="processing" class="flex flex-col">
                     <span class="text-white font-thin animate-pulse"
                         >Fetching Resources for {{ path }}
@@ -156,13 +141,16 @@ async function fetchResources(value) {
                         Here's a list of resouce links to get you started on
                         your choosen career path
                     </h1>
-                    <br>
+                    <br />
                 </div>
                 <div v-if="!processing" v-html="resource"></div>
             </div>
         </div>
 
-        <div class="w-screen bg-[#151519a6] md:w-[700px] rounded-lg mt-8 p-5 justify-center mx-auto" v-if="showReview">
+        <div
+            class="w-screen bg-[#151519a6] md:w-[700px] rounded-lg mt-8 p-5 justify-center mx-auto"
+            v-if="showReview"
+        >
             <div class="flex flex-col">
                 <h1 class="text-white font-thin">Rate and leave a review</h1>
                 <div class="flex py-2">
