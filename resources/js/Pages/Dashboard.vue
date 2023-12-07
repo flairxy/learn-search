@@ -53,7 +53,7 @@ async function fetchResources(value) {
         await axios.post(
             route("profile.career.update", { career: path.value })
         );
-        const endpoint = "http://api.learnsearch.dev/resources";
+        const endpoint = "https://api.learnsearch.dev/resources";
         const response = await axios.post(endpoint, { role: path.value });
         resource.value = response.data;
 
